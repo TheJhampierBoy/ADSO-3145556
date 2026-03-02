@@ -1,0 +1,25 @@
+@startuml
+title Coffee Shop - Use Case Diagram
+left to right direction
+
+actor Customer
+actor Admin
+
+rectangle "Coffee Shop System" {
+
+Customer -- (Register / Login)
+Customer -- (View Products)
+Customer -- (Add to Cart)
+Customer -- (Modify Cart)
+Customer -- (Checkout)
+Customer -- (Make Payment)
+
+Admin -- (Manage Users)
+Admin -- (Manage Roles)
+Admin -- (Manage Products)
+Admin -- (Manage Inventory)
+Admin -- (View Reports)
+
+}
+
+@enduml

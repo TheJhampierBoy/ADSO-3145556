@@ -1,0 +1,42 @@
+@startuml
+title Coffee Shop - Package Diagram
+
+package "Security Module" {
+    class User
+    class Role
+    class Module
+    class View
+    class Action
+    class UserRole
+    class RoleModule
+    class ViewAction
+    class ViewModule
+}
+
+package "Business Module" {
+    class Category
+    class Product
+    class Inventory
+    class StockMovement
+}
+
+package "Sales Module" {
+    class Cart
+    class CartItem
+    class Bill
+    class BillDetail
+    class PaymentMethod
+    class PaymentStatus
+    class BillStatus
+}
+
+package "Audit Module" {
+    class AuditLog
+}
+
+"Sales Module" --> "Business Module"
+"Sales Module" --> "Security Module"
+"Business Module" --> "Security Module"
+"Audit Module" --> "Security Module"
+
+@enduml

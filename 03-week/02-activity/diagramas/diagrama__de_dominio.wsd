@@ -1,0 +1,28 @@
+@startuml
+title Coffee Shop - Domain Diagram
+
+class User
+class Role
+class Product
+class Category
+class Inventory
+class Cart
+class CartItem
+class Bill
+class BillDetail
+class PaymentMethod
+
+User -- Role
+User -- Cart
+Cart -- CartItem
+CartItem -- Product
+
+Product -- Category
+Product -- Inventory
+
+User -- Bill
+Bill -- BillDetail
+BillDetail -- Product
+Bill -- PaymentMethod
+
+@enduml

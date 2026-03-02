@@ -1,0 +1,201 @@
+@startuml
+
+title Coffee Shop System - Professional Class Diagram
+
+' ========================
+' SECURITY MODULE
+' ========================
+
+class Person {
+    -personId: int
+    -firstName: string
+    -lastName: string
+    -email: string
+    -phone: string
+    -address: string
+    -createdAt: timestamp
+    -updatedAt: timestamp
+}
+
+class User {
+    -userId: int
+    -passwordHash: string
+    -isActive: boolean
+    -lastLogin: timestamp
+    -createdAt: timestamp
+    -updatedAt: timestamp
+}
+
+class Role {
+    -roleId: int
+    -name: string
+    -description: string
+    -isActive: boolean
+    -createdAt: timestamp
+}
+
+class Module {
+    -moduleId: int
+    -name: string
+    -routePath: string
+    -icon: string
+    -sortOrder: int
+    -isActive: boolean
+}
+
+class View {
+    -viewId: int
+    -name: string
+    -routePath: string
+    -sortOrder: int
+    -isActive: boolean
+}
+
+class Action {
+    -actionId: int
+    -name: string
+    -description: string
+}
+
+class UserRole {
+    -assignedAt: timestamp
+}
+
+class RoleModule {
+    -canRead: boolean
+    -canCreate: boolean
+    -canUpdate: boolean
+    -canDelete: boolean
+}
+
+class ViewAction
+class ViewModule
+
+' Security Relationships
+Person <|-- User
+User -- UserRole
+Role -- UserRole
+
+Role -- RoleModule
+Module -- RoleModule
+
+Module -- View
+View -- ViewAction
+Action -- ViewAction
+
+View -- ViewModule
+Module -- ViewModule
+
+Module --> Module : parent
+
+
+' ========================
+' BUSINESS MODULE
+' ========================
+
+class Category {
+    -categoryId: int
+    -name: string
+    -description: string
+    -imageUrl: string
+    -isActive: boolean
+}
+
+class Product {
+    -productId: int
+    -name: string
+    -description: text
+    -price: decimal
+    -imageUrl: string
+    -isAvailable: boolean
+    -isActive: boolean
+}
+
+class Inventory {
+    -currentStock: int
+    -minimumStock: int
+    -maximumStock: int
+    -reorderPoint: int
+}
+
+class StockMovement {
+    -movementType: enum
+    -quantity: int
+    -reason: string
+    -createdAt: timestamp
+}
+
+class Cart {
+    -cartId: int
+    -status: enum
+    -createdAt: timestamp
+}
+
+class CartItem {
+    -quantity: int
+    -unitPrice: decimal
+}
+
+class Bill {
+    -billId: int
+    -billNumber: string
+    -subtotal: decimal
+    -taxAmount: decimal
+    -discountAmount: decimal
+    -totalAmount: decimal
+    -billedAt: timestamp
+}
+
+class BillDetail {
+    -quantity: int
+    -unitPrice: decimal
+    -subtotal: decimal
+}
+
+class PaymentMethod {
+    -paymentMethodId: int
+    -name: string
+}
+
+class PaymentStatus {
+    -statusId: int
+    -name: string
+}
+
+class BillStatus {
+    -statusId: int
+    -name: string
+}
+
+class AuditLog {
+    -auditId: bigint
+    -tableName: string
+    -action: enum
+    -oldData: json
+    -newData: json
+    -createdAt: timestamp
+}
+
+' Business Relationships
+
+Category -- Product
+Product -- Inventory
+Product -- StockMovement
+
+StockMovement -- User
+
+Cart -- User
+Cart *-- CartItem
+CartItem -- Product
+
+Bill -- User
+Bill *-- BillDetail
+BillDetail -- Product
+
+Bill -- PaymentMethod
+Bill -- PaymentStatus
+Bill -- BillStatus
+
+User -- AuditLog
+
+@enduml

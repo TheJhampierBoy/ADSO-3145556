@@ -1,0 +1,20 @@
+@startuml
+title Coffee Shop - Purchase Activity Diagram
+
+start
+
+:User logs in;
+:Browse products;
+:Add product to cart;
+
+if (Add more products?) then (Yes)
+  :Continue shopping;
+else (No)
+  :Proceed to checkout;
+  :Select payment method;
+  :Confirm payment;
+  :Generate bill;
+endif
+
+stop
+@enduml

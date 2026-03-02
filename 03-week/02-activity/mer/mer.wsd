@@ -1,0 +1,129 @@
+@startuml
+title Coffee Shop - Entity Relationship Diagram (MER)
+
+entity Person {
+    +person_id : int <<PK>>
+    first_name : string
+    last_name : string
+    email : string
+    phone : string
+    address : string
+    created_at : timestamp
+    updated_at : timestamp
+}
+
+entity User {
+    +user_id : int <<PK>>
+    person_id : int <<FK>>
+    password_hash : string
+    is_active : boolean
+    last_login : timestamp
+    created_at : timestamp
+}
+
+entity Role {
+    +role_id : int <<PK>>
+    name : string
+    description : string
+    is_active : boolean
+}
+
+entity User_Role {
+    +user_role_id : int <<PK>>
+    user_id : int <<FK>>
+    role_id : int <<FK>>
+    assigned_at : timestamp
+}
+
+entity Category {
+    +category_id : int <<PK>>
+    name : string
+    description : string
+    image_url : string
+    is_active : boolean
+}
+
+entity Product {
+    +product_id : int <<PK>>
+    category_id : int <<FK>>
+    name : string
+    description : text
+    price : decimal
+    image_url : string
+    is_available : boolean
+    is_active : boolean
+}
+
+entity Inventory {
+    +inventory_id : int <<PK>>
+    product_id : int <<FK>>
+    current_stock : int
+    minimum_stock : int
+    maximum_stock : int
+    reorder_point : int
+}
+
+entity Cart {
+    +cart_id : int <<PK>>
+    user_id : int <<FK>>
+    status : string
+    created_at : timestamp
+}
+
+entity Cart_Item {
+    +cart_item_id : int <<PK>>
+    cart_id : int <<FK>>
+    product_id : int <<FK>>
+    quantity : int
+    unit_price : decimal
+}
+
+entity Bill {
+    +bill_id : int <<PK>>
+    user_id : int <<FK>>
+    bill_number : string
+    payment_method_id : int <<FK>>
+    subtotal : decimal
+    tax_amount : decimal
+    discount_amount : decimal
+    total_amount : decimal
+    billed_at : timestamp
+}
+
+entity Bill_Detail {
+    +bill_detail_id : int <<PK>>
+    bill_id : int <<FK>>
+    product_id : int <<FK>>
+    quantity : int
+    unit_price : decimal
+    subtotal : decimal
+}
+
+entity Payment_Method {
+    +payment_method_id : int <<PK>>
+    name : string
+    is_active : boolean
+}
+
+' ======================
+' RELACIONES
+' ======================
+
+Person ||--|| User
+User ||--o{ User_Role
+Role ||--o{ User_Role
+
+Category ||--o{ Product
+Product ||--|| Inventory
+
+User ||--o{ Cart
+Cart ||--o{ Cart_Item
+Product ||--o{ Cart_Item
+
+User ||--o{ Bill
+Bill ||--o{ Bill_Detail
+Product ||--o{ Bill_Detail
+
+Payment_Method ||--o{ Bill
+
+@enduml
