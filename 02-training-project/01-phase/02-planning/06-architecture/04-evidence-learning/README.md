@@ -19,10 +19,13 @@ La evidencia de esta actividad está publicada como revista digital en FlipHTML5
 
 ### 👉 [Abrir la evidencia (página 99)](https://online.fliphtml5.com/ubmbf/pari/#p=99)
 
-Enlace directo:
+### 📖 [Ver la revista completa](https://online.fliphtml5.com/ubmbf/pari/)
 
-```
-https://online.fliphtml5.com/ubmbf/pari/#p=99
-```
+Enlaces directos:
+
+| Enlace | URL |
+|--------|-----|
+| Evidencia (página 99) | `https://online.fliphtml5.com/ubmbf/pari/#p=99` |
+| Revista completa | `https://online.fliphtml5.com/ubmbf/pari/` |
 
 > Si el enlace abre en la portada, use el buscador de páginas de la revista y vaya a la **página 99**.
