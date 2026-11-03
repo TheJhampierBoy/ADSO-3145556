@@ -82,6 +82,8 @@ Architecture tools and references.
 #### 04-evidence-learning
 Architecture documentation deliverables.
 
+> 📌 **Submitted evidence:** [SENA Magazine - page 99 (FlipHTML5)](https://online.fliphtml5.com/ubmbf/pari/#p=99) · [Details](04-evidence-learning/README.md)
+
 **Evidence:**
 - Software architecture document (SAD)
 - Entity-Relationship Diagrams (ERD)
@@ -238,6 +240,8 @@ Herramientas y referencias de arquitectura.
 
 #### 04-evidence-learning
 Entregables de documentación de arquitectura.
+
+> 📌 **Evidencia entregada:** [Revista SENA - página 99 (FlipHTML5)](https://online.fliphtml5.com/ubmbf/pari/#p=99) · [Ver detalle](04-evidence-learning/README.md)
 
 **Evidencias:**
 - Documento de arquitectura de software (DAS)
